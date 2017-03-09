@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Search from './Search' ;
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <h1>Images searcher...</h1>
+        <Search/>
       </div>
     );
   }

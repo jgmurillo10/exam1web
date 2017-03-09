@@ -25,7 +25,12 @@ class Search extends Component{
 		return (
 
 
-
+			<input type="text" placeholder="Search" className="form-control" value={this.state.term} onChange={(event) => {
+                  this.setState({name: event.target.term})
+              }} />
+              <button className="btn btn-success" onClick={this.getPhotos.bind(this)}>
+              Save
+                  </button>
 
 			);
 	}
