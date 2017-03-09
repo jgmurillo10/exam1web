@@ -29,7 +29,7 @@ class Search extends Component{
                   this.setState({name: event.target.term})
               }} />
               <button className="btn btn-success" onClick={this.getPhotos.bind(this)}>
-              Save
+                    Save
                   </button>
 
 			);
