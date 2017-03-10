@@ -8,16 +8,16 @@ class PhotoColumn extends Component{
 
   render(){
     if(this.props.color[0]){
-      var url="https://farm"+this.props.color[0].farm+".staticflickr.com/"+this.props.color[0].server+"/"+this.props.color[0].id+"_"+this.props.color[0].secret+"_s.jpg";
-      var url1="https://farm"+this.props.color[1].farm+".staticflickr.com/"+this.props.color[1].server+"/"+this.props.color[1].id+"_"+this.props.color[1].secret+"_s.jpg";
-      var url2="https://farm"+this.props.color[2].farm+".staticflickr.com/"+this.props.color[2].server+"/"+this.props.color[2].id+"_"+this.props.color[2].secret+"_s.jpg";
-      var url3="https://farm"+this.props.color[3].farm+".staticflickr.com/"+this.props.color[3].server+"/"+this.props.color[3].id+"_"+this.props.color[3].secret+"_s.jpg";
-      var url4="https://farm"+this.props.color[4].farm+".staticflickr.com/"+this.props.color[4].server+"/"+this.props.color[4].id+"_"+this.props.color[4].secret+"_s.jpg";
-      var url5="https://farm"+this.props.color[5].farm+".staticflickr.com/"+this.props.color[5].server+"/"+this.props.color[5].id+"_"+this.props.color[5].secret+"_s.jpg";
-      var url6="https://farm"+this.props.color[6].farm+".staticflickr.com/"+this.props.color[6].server+"/"+this.props.color[6].id+"_"+this.props.color[6].secret+"_s.jpg";
-      var url7="https://farm"+this.props.color[7].farm+".staticflickr.com/"+this.props.color[7].server+"/"+this.props.color[7].id+"_"+this.props.color[7].secret+"_s.jpg";
-      var url8="https://farm"+this.props.color[8].farm+".staticflickr.com/"+this.props.color[8].server+"/"+this.props.color[8].id+"_"+this.props.color[8].secret+"_s.jpg";
-      var url9="https://farm"+this.props.color[9].farm+".staticflickr.com/"+this.props.color[9].server+"/"+this.props.color[9].id+"_"+this.props.color[9].secret+"_s.jpg";
+      var url="https://farm"+this.props.color[0].farm+".staticflickr.com/"+this.props.color[0].server+"/"+this.props.color[0].id+"_"+this.props.color[0].secret+"_m.jpg";
+      var url1="https://farm"+this.props.color[1].farm+".staticflickr.com/"+this.props.color[1].server+"/"+this.props.color[1].id+"_"+this.props.color[1].secret+"_m.jpg";
+      var url2="https://farm"+this.props.color[2].farm+".staticflickr.com/"+this.props.color[2].server+"/"+this.props.color[2].id+"_"+this.props.color[2].secret+"_m.jpg";
+      var url3="https://farm"+this.props.color[3].farm+".staticflickr.com/"+this.props.color[3].server+"/"+this.props.color[3].id+"_"+this.props.color[3].secret+"_m.jpg";
+      var url4="https://farm"+this.props.color[4].farm+".staticflickr.com/"+this.props.color[4].server+"/"+this.props.color[4].id+"_"+this.props.color[4].secret+"_m.jpg";
+      var url5="https://farm"+this.props.color[5].farm+".staticflickr.com/"+this.props.color[5].server+"/"+this.props.color[5].id+"_"+this.props.color[5].secret+"_m.jpg";
+      var url6="https://farm"+this.props.color[6].farm+".staticflickr.com/"+this.props.color[6].server+"/"+this.props.color[6].id+"_"+this.props.color[6].secret+"_m.jpg";
+      var url7="https://farm"+this.props.color[7].farm+".staticflickr.com/"+this.props.color[7].server+"/"+this.props.color[7].id+"_"+this.props.color[7].secret+"_m.jpg";
+      var url8="https://farm"+this.props.color[8].farm+".staticflickr.com/"+this.props.color[8].server+"/"+this.props.color[8].id+"_"+this.props.color[8].secret+"_m.jpg";
+      var url9="https://farm"+this.props.color[9].farm+".staticflickr.com/"+this.props.color[9].server+"/"+this.props.color[9].id+"_"+this.props.color[9].secret+"_m.jpg";
       
 
       return(
