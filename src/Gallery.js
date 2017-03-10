@@ -1,31 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import PhotoColumn from './PhotoColumn';
 
 class Gallery extends Component{
 
+  constructor(props){
+    super(props);
+  }
 
-	constructor(props){
-		super(props);
-		this.state={
-			photos: [this.props.colors.length],
-			colors: this.props.colors,
-			searchTerm: this.props.searchTerm
-		}
-		console.log(this.props.searchTerm, 'search term gallery');
+  render(){
+    return(
+        <div className="row">
+          <div className="col-md-12 padding-0">
+            <PhotoColumn color={this.props.array.yellow}/>
+            <PhotoColumn color={this.props.array.green}/>
+            <PhotoColumn color={this.props.array.blue}/>
+            <PhotoColumn color={this.props.array.cyan}/>
+            <PhotoColumn color={this.props.array.purple}/>
+            <PhotoColumn color={this.props.array.black}/>
+        </div>
+      </div>
+      );
+    }
 
-	}
-	componentDidMount(){
-		this.props.getPhotos();
-		console.log('getphotos gallery')
-	}
-	render(){
-		return (
-			<div>
-				Gallery
+  }
 
-			</div>
-			);
-	}
-
-}
 
 export default Gallery;

@@ -1,134 +1,76 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import Search from './Search' ;
 import Gallery from './Gallery';
 import axios from 'axios';
+
+const ROOT_URL='/flickr/';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      searchTerm:'car',
-      colors:['yellow', 'blue', 'red', 'black', 'grey', 'white'],
-      yellowPhotos: [10],
-      bluePhotos: [10],
-      redPhotos:[10],
-      blackPhotos:[10],
-      greyPhotos:[10],
-      whitePhotos:[10]
+      value: '',
+      yellow:[],
+      green:[],
+      blue:[],
+      cyan:[],
+      purple:[],
+      black:[]
+    };
+
+    this.changeImages=this.changeImages.bind(this);
+  }
+
+
+  changeImages(event){
+      this.setState({value: event.target.value});
+
+      if(this.state.value){
+
+        axios.get(ROOT_URL+ this.state.value+' yellow').then(response=>{
+          this.setState({yellow: response.data.photos.photo});
+        })
+        axios.get(ROOT_URL+ this.state.value+' green').then(response=>{
+          this.setState({green: response.data.photos.photo});
+        })
+        axios.get(ROOT_URL+ this.state.value+' blue').then(response=>{
+          this.setState({blue: response.data.photos.photo});
+        })
+        axios.get(ROOT_URL+ this.state.value+' cyan').then(response=>{
+          this.setState({cyan: response.data.photos.photo});
+        })
+        axios.get(ROOT_URL+ this.state.value+' purple').then(response=>{
+          this.setState({purple: response.data.photos.photo});
+        })
+        axios.get(ROOT_URL+ this.state.value+' black').then(response=>{
+          this.setState({ black: response.data.photos.photo});
+        })
+
+     
     }
   }
 
-  changeSearchTerm(searchTerm){
-    console.log(this.state)
-    this.setState({searchTerm:searchTerm});
-    this.getPhotos()
-    console.log('entro al changeSearchTerm')
-  }
-  componentDidMount(){
-    if(this.state.searchTerm!==''){
-          var base_url= 'http://localhost:9000/flickr/'+ this.state.searchTerm;
-          var url= base_url+' yellow';
-          console.log(url, '::URL')
-          axios.get(url).then(response=>{
-            this.setState({yellowPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos YELLOW')
-          })  
-
-          var url2= base_url+' blue';
-          console.log(url2, '::URL2 BLUE ')
-          axios.get(url2).then(response=>{
-            this.setState({bluePhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos BLUE')
-          })  
-
-
-          var url3= base_url+' red';
-          console.log(url3, '::URL RED')
-          axios.get(url3).then(response=>{
-            this.setState({redPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-
-          var url4= base_url+' black';
-          console.log(url4, '::URL BLACK')
-          axios.get(url4).then(response=>{
-            this.setState({blackPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-
-          var url5= base_url+' grey';
-          console.log(url5, '::URL GREY')
-          axios.get(url5).then(response=>{
-            this.setState({greyPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-
-          var url6= base_url+' white';
-          console.log(url6, '::URL WHITE')
-          axios.get(url6).then(response=>{
-            this.setState({whitePhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-
-    }
-      
-  }
-  getPhotos(){
-     var base_url= 'http://localhost:9000/flickr/'+ this.state.searchTerm;
-          var url= base_url+' yellow';
-          console.log(url, '::URL')
-          axios.get(url).then(response=>{
-            this.setState({yellowPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos YELLOW')
-          })  
-
-          var url2= base_url+' blue';
-          console.log(url2, '::URL2 BLUE ')
-          axios.get(url2).then(response=>{
-            this.setState({bluePhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos BLUE')
-          })  
-
-
-          var url3= base_url+' red';
-          console.log(url3, '::URL RED')
-          axios.get(url3).then(response=>{
-            this.setState({redPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-
-          var url4= base_url+' black';
-          console.log(url4, '::URL BLACK')
-          axios.get(url4).then(response=>{
-            this.setState({blackPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-
-          var url5= base_url+' grey';
-          console.log(url5, '::URL GREY')
-          axios.get(url5).then(response=>{
-            this.setState({greyPhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-
-          var url6= base_url+' white';
-          console.log(url6, '::URL WHITE')
-          axios.get(url6).then(response=>{
-            this.setState({whitePhotos:response.photos.photo})
-            console.log(response.photos.photo, 'photos')
-          })  
-  }
-
- render() {
+  render() {
     return (
-      <div className="App jumbotron">
-        <div className="">
-          <h2>Welcome to React</h2>
+      <div className="App-content">
+        <div className="row">
+          <h1 className="title thin2">Flickr Rainbow</h1>
+          <div className="row">
+            <p className="col-md-8 light">Search for something on Flickr and we will get you a rainbow of it</p>
+            <p className="col-md-4 light"><a target="_blank" href="https://github.com/jgmurillo10">By Juan G. Murillo</a></p>
+          </div>
+          
+          <br />
+          <form>
+            <input className="col-md-7" placeholder="puppy" type="text" value={this.state.value} onChange={this.changeImages}/><br/>
+          </form>
+          <h2 className="thin2">Your rainbow</h2>
+          <Gallery array={this.state}/>
         </div>
-        <Search changeSearchTerm={this.changeSearchTerm.bind(this)}/>
-        <Gallery getPhotos={this.getPhotos.bind(this)} searchTerm={this.state.searchTerm} colors={this.state.colors}/>
       </div>
+
+
     );
   }
 }
