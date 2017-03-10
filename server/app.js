@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const path = require('path');
 const flickr = require("flickrapi");
 const fs = require("fs");
-
+const API_KEY = process.env.API_KEY;
+const API_SECRET = process.env.API_SECRET;
 const app = express();
 
 // Assumes that there are two files containing the keys
@@ -13,8 +14,8 @@ const app = express();
 function getApiKeys(callback, errorcallback) {
 	fs.readFile(path.resolve(__dirname,"./api_key.txt"), "utf-8", (err, api_key) => {
 		if (err) {
-			errorcallback(err);
-			return;
+			callback(API_KEY,API_SECRET);
+			
 		}
 		fs.readFile(path.resolve(__dirname,"./api_secret.txt"), "utf-8",(err, api_secret) => {
 			if (err) {
@@ -30,7 +31,10 @@ function getApiKeys(callback, errorcallback) {
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
 // Serve static assets
+
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+
 
 // Searches Flickr for a specific query
 app.get('/flickr/:query', function (req, res) {
