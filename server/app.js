@@ -14,8 +14,8 @@ const app = express();
 function getApiKeys(callback, errorcallback) {
 	fs.readFile(path.resolve(__dirname,"./api_key.txt"), "utf-8", (err, api_key) => {
 		if (err) {
-			callback(API_KEY,API_SECRET);
-			
+			errorcallback(err);
+			return;
 		}
 		fs.readFile(path.resolve(__dirname,"./api_secret.txt"), "utf-8",(err, api_secret) => {
 			if (err) {
@@ -40,11 +40,21 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.get('/flickr/:query', function (req, res) {
 	console.log("Flickr call query=" + req.params['query'] );
 	getApiKeys((api_key, api_secret) => {
-		const Flickr = require("flickrapi"),
-	    flickrOptions = {
-	      api_key: api_key,
-	      secret: api_secret
-	    };
+		if(process.env.API_KEY){
+				const Flickr = require("flickrapi"),
+			    flickrOptions = {
+			      api_key: API_KEY,
+			      secret: API_SECRET
+			    };
+		}
+		else{
+			const Flickr = require("flickrapi"),
+			    flickrOptions = {
+			      api_key: api_key,
+			      secret: api_secret
+			    };
+		}
+		
 	    console.log(api_key);
 	    console.log(api_secret);
 		Flickr.tokenOnly(flickrOptions, function(error, flickr) {
