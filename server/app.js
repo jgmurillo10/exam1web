@@ -4,8 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const flickr = require("flickrapi");
 const fs = require("fs");
-const API_KEY = process.env.API_KEY;
-const API_SECRET = process.env.API_SECRET;
+
 const app = express();
 
 // Assumes that there are two files containing the keys
@@ -31,30 +30,17 @@ function getApiKeys(callback, errorcallback) {
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
 // Serve static assets
-
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
-
-
 
 // Searches Flickr for a specific query
 app.get('/flickr/:query', function (req, res) {
 	console.log("Flickr call query=" + req.params['query'] );
 	getApiKeys((api_key, api_secret) => {
-		if(process.env.API_KEY){
-				const Flickr = require("flickrapi"),
-			    flickrOptions = {
-			      api_key: API_KEY,
-			      secret: API_SECRET
-			    };
-		}
-		else{
-			const Flickr = require("flickrapi"),
-			    flickrOptions = {
-			      api_key: api_key,
-			      secret: api_secret
-			    };
-		}
-		
+		const Flickr = require("flickrapi"),
+	    flickrOptions = {
+	      api_key: api_key,
+	      secret: api_secret
+	    };
 	    console.log(api_key);
 	    console.log(api_secret);
 		Flickr.tokenOnly(flickrOptions, function(error, flickr) {
