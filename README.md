@@ -27,3 +27,6 @@ And finally run the server
 node server
 ```
 And open [http://localhost:9000](http://localhost:9000)
+
+# Toque de creatividad
+Se evidencia en las fuentes usadas, la distribución de los elementos, su usabilidad y la organización de la galería de fotos sin espaciado que es más agradable a la vista. Esta distribución se presta para hacer un botón de load more al final y que de movimiento y continuidad a la galería.
